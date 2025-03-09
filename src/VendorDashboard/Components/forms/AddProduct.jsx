@@ -46,7 +46,7 @@ const AddProduct=()=>{
         formData.append("category",value);
       })
      
-      const response=await fetch(`http://localhost:5000/product/add-product/${firmId}`,{
+      const response=await fetch(`${API_PATH}/product/add-product/${firmId}`,{
         method:"POST",
         body:formData
       })

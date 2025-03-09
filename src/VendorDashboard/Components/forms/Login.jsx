@@ -1,5 +1,5 @@
 import react,{useState} from "react";
-
+import {API_PATH} from "../../helpers/APIPath";
 const Login=({showWelcomeHandle})=>{
     const [email,setemail]=useState("");
     const [password,setpassword]=useState("");
@@ -7,7 +7,7 @@ const Login=({showWelcomeHandle})=>{
     const HandleLogin=async(e)=>{
         e.preventDefault();
         try{
-        const response=await fetch("http://localhost:5000/vendor/login",{
+        const response=await fetch(`${API_PATH}/vendor/login`,{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -27,7 +27,7 @@ const Login=({showWelcomeHandle})=>{
         }
         const vendorId=data.vendorId;
         console.log(vendorId);
-        const vendorResponse=await fetch(`http://localhost:5000/vendor/single-vendor/${vendorId}`);
+        const vendorResponse=await fetch(`${API_PATH}/vendor/single-vendor/${vendorId}`);
         const vendordata=await vendorResponse.json();
         if(vendorResponse.ok){
             console.log(vendordata.firmId);

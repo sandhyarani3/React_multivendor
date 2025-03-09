@@ -49,7 +49,7 @@ const AddFirm=()=>{
             })
             formData.append("offer",offer);
             formData.append("image",image);
-            const response=await fetch("http://localhost:5000/firm/add-firm",{
+            const response=await fetch(`${API_PATH}/firm/add-firm`,{
                 method:"POST",
                 headers:{
                     'token':`${loginToken}`,

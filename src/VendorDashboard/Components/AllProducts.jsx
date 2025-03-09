@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react'
-
+import { API_PATH } from '../helpers/APIPath';
 const AllProducts = () => {
     const [products,setproducts]=useState([]);
     const productHandler=async()=>{
         const firmId=localStorage.getItem("firmId");
         try{
-        const response=await fetch(`http://localhost:5000/product/${firmId}/products`);
+        const response=await fetch(`${API_PATH}/product/${firmId}/products`);
         const productsdata=await response.json();
         setproducts(productsdata.products)
         console.log(productsdata.products);
@@ -18,7 +18,7 @@ const AllProducts = () => {
 
     const HandleDelete=async(productId)=>{
         try {
-            const response=await fetch(`http://localhost:5000/product/${productId}`,{
+            const response=await fetch(`${API_PATH}/product/${productId}`,{
                 method:"DELETE"
 
             })
@@ -57,7 +57,7 @@ const AllProducts = () => {
             <td>
                 {item.image && (
                     <img 
-                        src={`http://localhost:5000/uploads/${encodeURIComponent(item.image)}`} 
+                        src={`${API_PATH}/uploads/${encodeURIComponent(item.image)}`} 
                         alt={item.productName} 
                         style={{ 
                             width: "100%",  // Makes image take full column width
